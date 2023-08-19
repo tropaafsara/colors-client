@@ -1,8 +1,14 @@
-
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
+import { FaHeart, FaHeartBroken } from "react-icons/fa";
 
 
 const ColorCard = ({color}) => {
-
+  const navigate = useNavigate();
+  const { user} = useContext(AuthContext);
+  const [isFavorite, setIsFavorite] = useState(false);
   const { _id, name, DominantColor1, DominantColor2, AccentColor1, AccentColor2, AccentColor3, AccentColor4 } = color;
 
   const d1 = `${DominantColor1}`;
@@ -43,6 +49,39 @@ const ColorCard = ({color}) => {
     height: '100px', 
   }:null;
 
+
+
+  const handleFavorite = cls => {
+     
+    if (user && user.email) {
+          // setIsFavorite(prevState => !prevState);
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Added to Favorite',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setIsFavorite(true);
+          }
+    else {
+      Swal.fire({
+        title: 'Please login',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login now!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login')
+        }
+      })
+    }
+  }
+
+
+
     return (
        <div className="">
        <div className="flex ">
@@ -55,7 +94,11 @@ const ColorCard = ({color}) => {
             
         </div>
         <div className="mt-3">
-            <h1>Name : {name}</h1>
+            <div className="flex gap-8 items-center">
+            <h1>Name :  {name}</h1>
+            <button onClick={handleFavorite}><span><FaHeart color={isFavorite ? "red" : "inherit"}></FaHeart></span></button>
+            
+            </div>
         </div>
 
        </div>
