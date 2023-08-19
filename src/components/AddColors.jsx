@@ -21,7 +21,7 @@ const AddColors = () => {
         console.log(newColor);
 
         //send data to server
-        fetch('https://colors-server-taupe.vercel.app/colors', {
+        fetch('http://localhost:9000/colors', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
