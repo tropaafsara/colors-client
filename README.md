@@ -2,6 +2,7 @@
 # colors-client
 
 * Hosting, deploy, authentication : Firebase
+* Server deploy: Vercel
 * Database : MongoDB
 
 * Login Credentials :
