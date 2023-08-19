@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader: () => fetch('http://localhost:8000/colors')
+    loader: () => fetch('https://colors-server-taupe.vercel.app/colors')
   },
   {
     path: "addColors",

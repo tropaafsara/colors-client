@@ -21,7 +21,7 @@ const AddColors = () => {
         console.log(newColor);
 
         //send data to server
-        fetch('http://localhost:8000/colors', {
+        fetch('https://colors-server-taupe.vercel.app/colors', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,7 +45,7 @@ const AddColors = () => {
     return (
         <div>
             <div >
-                <h2 className='text-center text-5xl mt-5 mt-8'>Add a Toy </h2>
+                <h2 className='text-center text-5xl mt-5 mt-8'>Add a Color Palette</h2>
                 <form onSubmit={handleAddColors}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                         <div className="form-control">
